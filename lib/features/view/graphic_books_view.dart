@@ -24,8 +24,7 @@ class GraphicBooksView extends StatelessWidget {
               getIt.get<HomeRepoImpl>(),
             )..fetchGraphicBooks('graphic');
           },
-          child: BlocConsumer<GraphicBooksCubit, GraphicBooksState>(
-            listener: (context, state) {},
+          child: BlocBuilder<GraphicBooksCubit, GraphicBooksState>(
             builder: (context, state) {
               if (state is GraphicBooksLoading) {
                 return const Center(

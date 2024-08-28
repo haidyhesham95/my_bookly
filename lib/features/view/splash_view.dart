@@ -33,24 +33,13 @@ class _SplashViewbodyState extends State<SplashView>
 
   @override
   Widget build(BuildContext context) {
-    return
-        Scaffold(
+    return Scaffold(
           backgroundColor: Colors.white,
         body: Center(
           child: Image.asset(Assets.imagesSplash),
         ),
       );
-    //   Column(
-    //   mainAxisAlignment: MainAxisAlignment.center,
-    //   crossAxisAlignment: CrossAxisAlignment.stretch,
-    //   children: [
-    //     Image.asset(Assets.imagesSplash),
-    //     const SizedBox(
-    //       height: 4,
-    //     ),
-    //     SlidingText(slidingAnimation: slidingAnimation),
-    //   ],
-    // );
+
   }
 
   void initSlidingAnimation() {
@@ -71,7 +60,7 @@ class _SplashViewbodyState extends State<SplashView>
       const Duration(seconds: 2),
           () {
 
-        GoRouter.of(context).push(AppRouter.kHomeView);
+        GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
       },
     );
   }

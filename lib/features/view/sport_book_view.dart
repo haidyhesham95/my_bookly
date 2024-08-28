@@ -25,11 +25,8 @@ class SportBookView extends StatelessWidget {
             getIt.get<HomeRepoImpl>(),
           )..fetchSportBooks('sport');
         },
-        child: BlocConsumer<SportBookCubit, SportBookState>(
-          listener: (context, state) {},
+        child: BlocBuilder<SportBookCubit, SportBookState>(
           builder: (context, state) {
-
-
             if (state is SportBooksLoading) {
               return const Center(
                 child: CircularProgressIndicator(color: AppColors.dark,),

@@ -24,8 +24,7 @@ class HealthBooksView extends StatelessWidget {
               getIt.get<HomeRepoImpl>(),
             )..fetchHealthBooks('health');
           },
-          child: BlocConsumer<HealthBooksCubit, HealthBooksState>(
-            listener: (context, state) {},
+          child: BlocBuilder<HealthBooksCubit, HealthBooksState>(
             builder: (context, state) {
               if (state is HealthBooksLoading) {
                 return const Center(

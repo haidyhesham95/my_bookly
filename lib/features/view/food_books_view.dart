@@ -25,8 +25,7 @@ class FoodBooksView extends StatelessWidget {
               getIt.get<HomeRepoImpl>(),
             )..fetchFoodBooks('food');
           },
-          child: BlocConsumer<FoodBooksCubit, FoodBooksState>(
-            listener: (context, state) {},
+          child: BlocBuilder<FoodBooksCubit, FoodBooksState>(
             builder: (context, state) {
               if (state is FoodBooksLoading) {
                 return const Center(

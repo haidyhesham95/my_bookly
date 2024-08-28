@@ -23,8 +23,7 @@ class ProgrammingBooksView extends StatelessWidget {
               getIt.get<HomeRepoImpl>(),
             )..fetchProgrammingBooks('programming');
           },
-          child: BlocConsumer<ProgrammingBooksCubit, ProgrammingBooksState>(
-            listener: (context, state) {},
+          child: BlocBuilder<ProgrammingBooksCubit, ProgrammingBooksState>(
             builder: (context, state) {
               if (state is ProgrammingBooksLoading) {
                 return const Center(
