@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 
 
-class CustomTextField extends StatelessWidget {
-  const  CustomTextField ({super.key, this.onFieldSubmitted, this.onPressed, this.controller});
+class SearchField extends StatelessWidget {
+  const  SearchField ({super.key, this.onFieldSubmitted, this.onPressed, this.controller});
   final void Function(String)? onFieldSubmitted;
   final  void Function()? onPressed;
   final TextEditingController? controller;

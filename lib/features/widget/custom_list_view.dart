@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import '../../generated/assets.dart';
 import '../../utils/styles/colors.dart';
 import '../../utils/styles/text.dart';
+import '../manger/books_cubit.dart';
 import '../view/book_details.dart';
 
 class CustomListView extends StatelessWidget {
  const CustomListView({super.key, required this.state});
 
-final dynamic  state;
+final BooksSuccess  state;
   @override
   Widget build(BuildContext context) {
 

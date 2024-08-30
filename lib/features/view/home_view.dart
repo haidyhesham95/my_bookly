@@ -1,53 +1,76 @@
 
+import 'package:bookly_app/features/view/book_view.dart';
 import 'package:bookly_app/generated/assets.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-
-import '../../utils/app_router.dart';
 import '../../utils/styles/text.dart';
 
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
-
-
   @override
   Widget build(BuildContext context) {
-    List<Item> items = [
-      Item(
-        image: Assets.imagesFood,
-        onTap: () {
-          GoRouter.of(context).push(AppRouter.kFoodBooksView);
-        },
-      ),
-      Item(
-        image: Assets.imagesHealth,
-        onTap: () {
-          GoRouter.of(context).push(AppRouter.kHealthBooksView);
-
-        },
-      ),
-      Item(
-        image: Assets.imagesSport,
-        onTap: () {
-          GoRouter.of(context).push(AppRouter.kSportBooksView);
-        },
-      ),
-      Item(
-        image: Assets.imagesProgramming,
-        onTap: () {
-          GoRouter.of(context).push(AppRouter.kProgrammingBooksView);
-        },
-      ),
-
-      Item(
-        image: Assets.imagesGraphic,
-        onTap: () {
-          GoRouter.of(context).push(AppRouter.kGraphicBooksView);
-        },
-      ),
-    ];
-
+      List<Item> items = [
+        Item(
+          category: 'food',
+          image: Assets.imagesFood,
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const BooksView(query: 'food', category: 'food'),
+              ),
+            );
+          },
+        ),
+        Item(
+          category: 'health',
+          image: Assets.imagesHealth,
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const BooksView(query: 'health &maxResults=10&printType=books', category: 'health'),
+              ),
+            );
+          },
+        ),
+        Item(
+          category: 'sport',
+          image: Assets.imagesSport,
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const BooksView(query: 'sport', category: 'sport'),
+              ),
+            );
+          },
+        ),
+        Item(
+          category: 'programming',
+          image: Assets.imagesProgramming,
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const BooksView(category: 'programming', query: 'programming'),
+              ),
+            );
+          },
+        ),
+        Item(
+          category: 'graphic',
+          image: Assets.imagesGraphic,
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const BooksView(query: 'graphic', category: 'graphic'),
+              ),
+            );
+          },
+        ),
+      ];
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -106,10 +129,15 @@ class HomeView extends StatelessWidget {
     );
   }
 }
-  class Item {
-    final void Function()? onTap ;
-    final String image;
+class Item {
+  final String category; // Add a category field
+  final void Function()? onTap;
+  final String image;
 
-    Item({required this.image, required this.onTap,});
+  Item({
+    required this.category, // Update the constructor
+    required this.image,
+    required this.onTap,
+  });
 }
 
