@@ -14,7 +14,7 @@ class CardWidget extends StatelessWidget {
       alignment: AlignmentDirectional.center,
       heightFactor: 4.5,
       child: Container(
-        padding: const EdgeInsets.only(left: 25),
+        padding: const EdgeInsets.only(left: 25,right: 20),
         height: size.height * .2,
         width: size.width * .9,
         decoration: BoxDecoration(
