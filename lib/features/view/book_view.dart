@@ -26,12 +26,14 @@ class BooksView extends StatelessWidget {
           return BooksCubit(
             getIt.get<HomeRepoImpl>(),
           )..fetchBooks(query, '');
-          },
+        },
         child: BlocBuilder<BooksCubit, BooksState>(
           builder: (context, state) {
             if (state is BooksLoading) {
               return const Center(
                   child: CircularProgressIndicator(color: AppColors.dark));
+            } else if (state is BooksFailure) {
+              return Center(child: Text(state.message));
             } else if (state is BooksFailure) {
               return Center(child: Text(state.message));
             } else if (state is BooksSuccess) {
@@ -55,6 +57,8 @@ class BooksView extends StatelessWidget {
                     },
                   ),
                   const SizedBox(height: 20),
+                  if (state.books.isEmpty)
+                    const Center(child: Text('No Books Found')),
                   Expanded(child: CustomListView(state: state)),
                 ],
               );

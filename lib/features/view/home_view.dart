@@ -17,7 +17,7 @@ class HomeView extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const BooksView(query: 'food', category: 'food'),
+                builder: (context) => const BooksView(query: 'kitchen', category: 'food'),
               ),
             );
           },

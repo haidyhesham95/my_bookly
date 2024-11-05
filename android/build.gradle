@@ -1,15 +1,14 @@
-
 buildscript {
-    ext.kotlin_version = '1.6.0'
+    ext.kotlin_version = '1.9.0'
     repositories {
         google()
         mavenCentral()
     }
 
     dependencies {
-        classpath 'com.google.gms:google-services:4.4.2'
-        classpath 'com.android.tools.build:gradle:7.3.1'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:4.3.15' // Updated Google Services plugin
+        classpath 'com.android.tools.build:gradle:7.3.1' // Ensure this version is compatible with your setup
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.0" // Updated Kotlin plugin version
     }
 }
 
@@ -26,6 +25,17 @@ subprojects {
 }
 subprojects {
     project.evaluationDependsOn(":app")
+}
+
+// Force Kotlin version to resolve compatibility issues
+subprojects {
+    configurations.all {
+        resolutionStrategy.eachDependency { details ->
+            if (details.requested.group == 'org.jetbrains.kotlin') {
+                details.useVersion kotlin_version
+            }
+        }
+    }
 }
 
 tasks.register("clean", Delete) {
